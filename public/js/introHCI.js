@@ -12,11 +12,24 @@ function initializePage() {
 	$('.project a').click(addProjectDetails);
 
 	$('#colorBtn').click(randomizeColors);
+
+	$.get("projectHTML:projectID", callBackFn)
+
+	//$.post("http://URL", {"json":"json"}, callBackFn)
+
 }
 
 /*
  * Make an AJAX call to retrieve project details and add it in
  */
+function addProject(result) {
+  var projectHTML = '<a href="#" class="thumbnail">' +
+    '<img src="' + result['image'] + '" class="img">' +
+    '<p>' + result['title'] + '</p>' +
+    '<p><small>' + result['date'] +
+    '</small></p></a>'; 
+}
+
 function addProjectDetails(e) {
 	// Prevent following the link
 	e.preventDefault();
